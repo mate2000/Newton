@@ -5,6 +5,7 @@
  */
 package ventana;
 
+import DataBase.consultas;
 import java.sql.Date;
 
 /**
@@ -18,6 +19,8 @@ public class SignUpReal extends javax.swing.JFrame {
      */
     public SignUpReal() {
         initComponents();
+        
+        
         
     }
 
@@ -82,14 +85,15 @@ public class SignUpReal extends javax.swing.JFrame {
 
     private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
         // TODO add your handling code here:
-        Date date = (Date) dateSignUp.getDate();
-        String nombreCompleto = nombreSignUp.getText();
-        long d = date.getTime();
-        java.sql.Date fecha = new java.sql.Date(d);
         
-        String idPersona = idSignUp.getText();
+        String nombre = nombreSignUp.getText();
+        String fecha = dateSignUp.getDateFormatString();
+        int id=Integer.getInteger(idSignUp.getText());
         
+        if(nombre!=""&&fecha!=""){
         
+             consultas.ingresarPersona(nombre, fecha, id);
+        }
         
     }//GEN-LAST:event_btnSignUpActionPerformed
 

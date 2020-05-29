@@ -5,6 +5,7 @@
  */
 package ventana;
 
+import DataBase.consultas;
 /**
  *
  * @author Paulina
@@ -16,6 +17,22 @@ public class RegistrarObservacion extends javax.swing.JFrame {
      */
     public RegistrarObservacion() {
         initComponents();
+        
+        int id=Integer.valueOf(nombreObservacion.getText());
+        String objeto=objetoObservacion.getText();
+        String lugar=lugarObservacion.getText();
+        String hora=horaObservacion.getText();
+        
+        
+        
+        
+        if(objeto!=""&&lugar!=""&&hora!=""){
+           consultas.ingresarObservacion(objeto, lugar, hora, id);
+        }
+        
+       
+        
+        
     }
 
     /**

@@ -5,6 +5,8 @@
  */
 package ventana;
 
+import DataBase.consultas;
+
 /**
  *
  * @author Paulina
@@ -58,8 +60,12 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String id = idLogin.getText();
+        int id =Integer.valueOf(idLogin.getText());
         
+        if(consultas.loginUsuario(id)){
+            
+            
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
