@@ -9,13 +9,15 @@ import java.sql.*;
  *
  * @author MateoMA
  */
-public class DB {
+  public class DB {
+
+   
     
-   private Statement connection(){
+  private static Statement connection(){
         
         try {
             
-            Connection db  = DriverManager.getConnection("jdbc:postgresql://host:5432/Newton","pepin1159","pepin1159");
+            Connection db  = DriverManager.getConnection("jdbc:postgresql://localhost:5432/NasaDB","postgres","pepin1159");
             
             Statement statement = db.createStatement();
             
@@ -23,19 +25,24 @@ public class DB {
             
         } catch (Exception e) {
             
-            System.out.println("error en la coneccion a la DB");
+            System.out.println(e);
+            
         }
            return null;
     } 
    
-  public ResultSet resultQuery(String sentencia) throws SQLException {
+    public static ResultSet resultQuery(String sentencia) throws SQLException {
       
        Statement statement = connection();
        
        return statement.executeQuery(sentencia);
-        
-      
     }
-    
-    
-}
+  
+     
+    public static void insert(String sentencia) throws SQLException{
+        
+       Statement statement = connection();
+      
+       statement.executeUpdate(sentencia);
+    }
+ }
