@@ -4,12 +4,20 @@
  * and open the template in the editor.
  */
 package ventana;
+import javax.swing.JTable;
+import javax.swing.table.*;
+
 
 /**
  *
  * @author Paulina
  */
+
 public class Observation extends javax.swing.JFrame {
+    
+    
+    
+    
 
     /**
      * Creates new form Observation
@@ -17,10 +25,26 @@ public class Observation extends javax.swing.JFrame {
     public Observation() {
         initComponents();
         this.setLocationRelativeTo(null);
+        Object prueba [][] = {
+            {"hola", "adio", "otro"},
+            {"fuego","hielo", "mas"}             
+        };
+        tablaObservaciones.getModel().setValueAt("hola", 0, 0);
+        tablaObservaciones.getModel().setValueAt("hola", 1, 0);
+        tablaObservaciones.getModel().setValueAt("hola", 0, 1);
+        
+        
+        
+        
+       
+        
         tablaObservaciones.getColumn("Title 1").setHeaderValue("Nombre");
         tablaObservaciones.getColumn("Title 2").setHeaderValue("Objeto");
         tablaObservaciones.getColumn("Title 3").setHeaderValue("Lugar");
         tablaObservaciones.getColumn("Title 4").setHeaderValue("Hora (Zona horaria nacional)");
+        
+        
+        
     }
 
     /**
