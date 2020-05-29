@@ -39,41 +39,33 @@ public  class   consultas {
    }
    
    
-   public static void consulta1(){
-      
-       String consulta= "select nombre,objeto,lugar,hora from personal\n" +
-"         inner join observaciones on observaciones.idPersonal=personal.id";
-       
-       String resultado="";
-        
-       System.out.println(consultas.setNumRow(consulta)+" num de filas");
-       
-       try {
-        ResultSet registro=DB.resultQuery(consulta);
-           
-      //  Array tabla=registro.getArray("nombre");
-        
-        
-        while(registro.next()){
-           
-            System.out.println(registro.getString("nombre") + " , " + registro.getString("objeto") + " , " + registro.getString("lugar")+ " , " +
-                    registro.getString("hora"));    
-          
-        }   
-           
-           
-       } catch (Exception e) {
-           System.out.println(e);
-       }
+   private static String convert(String nombreMision){
+    
+     char[] mision=nombreMision.toCharArray();
+     String parseNombre="";
      
-   }
+     for (int i = 0; i < mision.length; i++) {
+            
+            if(i==0){
+              parseNombre+="'"; 
+            }
+            parseNombre+=mision[i];
+            
+            if(i==mision.length-1){
+             parseNombre+="'";
+            }
+        }   
+     return parseNombre;
+    }
+   
    
    
    public static String[][] RegistrosObervacion(){
         /*
-        select nombre,objeto,lugar,hora from personal
+          select nombre,objeto,lugar,hora from personal
              inner join observaciones on observaciones.idPersonal=personal.id
        */
+        
         String consulta= "select nombre,objeto,lugar,hora from personal\n" +
                   "inner join observaciones on observaciones.idPersonal=personal.id";
         
@@ -89,13 +81,13 @@ public  class   consultas {
                 rowData[0][registro.getRow()-1]= registro.getString(i);
                 rowData[1][registro.getRow()-1]= registro.getString(i+1);
                 rowData[2][registro.getRow()-1]= registro.getString(i+2);
-                rowData[3][registro.getRow()-1]=  registro.getString(i+3); 
+                rowData[3][registro.getRow()-1]= registro.getString(i+3); 
              }
        } catch (Exception e) {
             
             System.out.println(e);
          }
-    return rowData;
+      return rowData;
    }
    
    
@@ -108,6 +100,9 @@ public  class   consultas {
 	 inner join misiones on misiones.id=personalmision.idmision
 	 where lower(misiones.nombre) like lower('sonda solar parker')
     */
+      
+      nombreMision= consultas.convert(nombreMision);
+    
       String consulta= "select personal.nombre,titulo,fechanacimiento \n" +
 "        from personal\n" +
 "	 inner join personalmision on personalmision.idpersonal=personal.id\n" +
@@ -144,6 +139,8 @@ public  class   consultas {
         where lower(misiones.nombre) like lower('sonda solar parker')
      */
     
+      nombreMision=consultas.convert(nombreMision);
+    
       String consulta= "select entidadafiliada.nombre\n" +
 "        from entidadafiliada\n" +
 "        inner join entidadesmision on entidadesmision.identidadafiliada=entidadafiliada.id \n" +
@@ -176,6 +173,8 @@ public  class   consultas {
            from misiones
 	   where lower(misiones.nombre) like lower('sonda solar parker')
        */
+     
+     nombreMision=consultas.convert(nombreMision);
      
      String consulta="select nombre, estadomision, costemision, fechalanzamiento,fechafinalizacion,objetivomision\n" +
 "           from misiones\n" +
@@ -212,6 +211,8 @@ public  class   consultas {
 	inner join misiones on misiones.id=categoriamision.idmision
 	where lower(misiones.nombre) like lower('apollo 11')
        */ 
+       
+       nombreMision=consultas.convert(nombreMision);
       
         String consulta="select categorias.categoria \n" +
 "        from categorias\n" +
@@ -247,6 +248,8 @@ public  class   consultas {
 	
        */ 
       
+        nombreMision=consultas.convert(nombreMision);
+      
         String consulta="   select  especializaciones.especializacion\n" +
 "          from especializaciones\n" +
 "	  inner join especializacionpersonal on especializacionpersonal.idespecializacion=especializaciones.id\n" +
@@ -279,6 +282,8 @@ public  class   consultas {
 	  inner join misiones on misiones.id=entidadesmision.idmision
 	  where lower(misiones.nombre) like lower('sonda solar parker')
        */ 
+      
+      nombreMision=consultas.convert(nombreMision);
       
         String consulta="select tareasentidadafiliada.tarea\n" +
 "      from tareasentidadafiliada\n" +
@@ -339,6 +344,15 @@ public  class   consultas {
        
        */       
        
+       nombre=consultas.convert(nombre);
+       fechaLanzamiento=consultas.convert(fechaLanzamiento);
+       fechaFinalizacion=consultas.convert(fechaFinalizacion);
+       costo=consultas.convert(costo);
+       estadoMision=consultas.convert(estadoMision);
+       objetivoMision=consultas.convert(objetivoMision);
+       
+    
+    
      String sentencia="insert into misiones(nombre,fechalanzamiento,fechafinalizacion,costemision,estadomision,objetivomision) \n" +
 "        values("+nombre+","+fechaLanzamiento+","+fechaFinalizacion+","+costo+","+estadoMision+","+objetivoMision+")";
       
@@ -360,6 +374,10 @@ public  class   consultas {
         values('Valentina',1012538863,'1999-04-09')
        */
     
+       nombre=consultas.convert(nombre);
+       fechaNacimiento=consultas.convert(fechaNacimiento);
+       
+       
        String sentencia="insert into personal(nombre,id,fechanacimiento) \n" +
 "        values("+nombre+","+id+","+fechaNacimiento+")";
           
@@ -383,6 +401,10 @@ public  class   consultas {
         values('kevin',1012538863,'1999-04-09',ing mecanico)
        */
     
+       nombre=consultas.convert(nombre);
+       fechaNacimiento=consultas.convert(fechaNacimiento);
+       titulo=consultas.convert(titulo);
+       
        String sentencia="insert into personal(nombre,id,fechanacimiento,titulo) \n" +
 "        values("+nombre+","+id+","+fechaNacimiento+","+titulo+")";
        
@@ -404,7 +426,8 @@ public  class   consultas {
         values('Blue Origin')  
        */
        
-   
+        nombre=consultas.convert(nombre);
+        
         String sentencia="insert into entidadafiliada(nombre) \n" +
 "        values("+nombre+")";
         
@@ -418,7 +441,7 @@ public  class   consultas {
    }
    
    
-   public static void ingresarObservacion(String objeto,String lugar,String hora, int id){
+   public static void ingresarObservacion(String objeto,String lugar,String hora, int idPersona){
    
        /*
          insert into observaciones(hora,lugar,objeto) 
@@ -426,8 +449,13 @@ public  class   consultas {
        
        */
        
+       objeto=consultas.convert(objeto);
+       lugar=consultas.convert(lugar);
+       hora=consultas.convert(hora);
+       
+       
             String sentencia=" insert into observaciones(hora,lugar,objeto,idpersonal) \n" +
-"        values("+hora+","+lugar+","+objeto+","+id+")";
+"        values("+hora+","+lugar+","+objeto+","+idPersona+")";
         
         try {
            
@@ -484,6 +512,8 @@ public  class   consultas {
           insert into tareasentidadafiliada(identidadesmision,tarea) values(5,'Creaer el modulo de laboratorios')
        */
        
+       tarea=consultas.convert(tarea);
+       
        String sentencia="insert into tareasentidadafiliada(identidadesmision,tarea) values("+idEntidadMision+","+tarea+")";
    
         try {
@@ -518,15 +548,7 @@ public  class   consultas {
    
    
    
-   
-   
-   
-   
-   
-   
-   
-   
-   
+
    
 }
    
