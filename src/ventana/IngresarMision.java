@@ -9,6 +9,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import DataBase.consultas;
 
 /**
  *
@@ -58,11 +59,10 @@ public class IngresarMision extends javax.swing.JFrame {
         btnEnviarPersonal = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
+        nombreEntidad = new javax.swing.JTextField();
+        tareaEntidad = new javax.swing.JTextField();
         btnEnviarEntidad = new javax.swing.JButton();
         fechaNaci = new com.toedter.calendar.JDateChooser();
-        jLabel16 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -104,13 +104,8 @@ public class IngresarMision extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Obejtivo de la misión");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, -1, -1));
-
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 220, -1));
 
-        generalNombre.setBackground(new java.awt.Color(255, 255, 255));
-        generalNombre.setForeground(new java.awt.Color(0, 0, 0));
         generalNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 generalNombreActionPerformed(evt);
@@ -119,27 +114,17 @@ public class IngresarMision extends javax.swing.JFrame {
         getContentPane().add(generalNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 130, -1));
 
         fechaLanzamiento.setBackground(new java.awt.Color(255, 255, 255));
-        fechaLanzamiento.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(fechaLanzamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 130, -1));
-
-        generalFecha.setBackground(new java.awt.Color(255, 255, 255));
-        generalFecha.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(generalFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 130, -1));
-
-        generalCosto.setBackground(new java.awt.Color(255, 255, 255));
-        generalCosto.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(generalCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, 130, -1));
 
-        generalObjetivo.setBackground(new java.awt.Color(255, 255, 255));
         generalObjetivo.setColumns(20);
-        generalObjetivo.setForeground(new java.awt.Color(0, 0, 0));
         generalObjetivo.setRows(5);
         jScrollPane1.setViewportView(generalObjetivo);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 160, 60));
 
         btnEnviarGeneral.setBackground(new java.awt.Color(255, 255, 255));
-        btnEnviarGeneral.setForeground(new java.awt.Color(0, 0, 0));
         btnEnviarGeneral.setText("Enviar");
         btnEnviarGeneral.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,28 +133,20 @@ public class IngresarMision extends javax.swing.JFrame {
         });
         getContentPane().add(btnEnviarGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 370, -1, -1));
 
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Nombre");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, -1, -1));
 
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Título");
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, -1, -1));
 
-        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Nacimiento");
         getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, -1, -1));
 
-        personalNombre.setBackground(new java.awt.Color(255, 255, 255));
         personalNombre.setForeground(new java.awt.Color(51, 51, 51));
         getContentPane().add(personalNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, 130, -1));
-
-        personalTitulo.setBackground(new java.awt.Color(255, 255, 255));
-        personalTitulo.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(personalTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, 130, -1));
 
         btnEnviarPersonal.setBackground(new java.awt.Color(255, 255, 255));
-        btnEnviarPersonal.setForeground(new java.awt.Color(0, 0, 0));
         btnEnviarPersonal.setText("Enviar");
         btnEnviarPersonal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,28 +162,27 @@ public class IngresarMision extends javax.swing.JFrame {
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Tarea");
         getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 180, -1, -1));
+        getContentPane().add(nombreEntidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 140, 110, -1));
 
-        jTextField8.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField8.setForeground(new java.awt.Color(0, 0, 0));
-        getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 140, 110, -1));
-
-        jTextField9.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField9.setForeground(new java.awt.Color(0, 0, 0));
-        getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 180, 110, -1));
+        tareaEntidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tareaEntidadActionPerformed(evt);
+            }
+        });
+        getContentPane().add(tareaEntidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 180, 110, -1));
 
         btnEnviarEntidad.setBackground(new java.awt.Color(255, 255, 255));
-        btnEnviarEntidad.setForeground(new java.awt.Color(0, 0, 0));
         btnEnviarEntidad.setText("Enviar");
+        btnEnviarEntidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnviarEntidadActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnEnviarEntidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 240, -1, -1));
 
         fechaNaci.setBackground(new java.awt.Color(255, 255, 255));
-        fechaNaci.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(fechaNaci, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 200, 130, -1));
 
-        jLabel16.setText("jLabel16");
-        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 310, -1, -1));
-
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rocket2 (2).jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 710, 450));
@@ -227,6 +203,9 @@ public class IngresarMision extends javax.swing.JFrame {
         duracion = generalFecha.getText();
         costo = generalCosto.getText();
         objetivo = generalObjetivo.getText();
+        
+        consultas.ingresarMision(nombre, costo, "", objetivo, fechaLanza, fechaLanza);
+        
     }//GEN-LAST:event_btnEnviarGeneralActionPerformed
 
     private void btnEnviarPersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarPersonalActionPerformed
@@ -236,9 +215,24 @@ public class IngresarMision extends javax.swing.JFrame {
         nombre = personalNombre.getText();
         titulo = personalTitulo.getText();      
         nacimiento = fechaNaci.getDate().toString();
+        consultas.ingresarPersonaMision(nombre, nacimiento,titulo);
+        
         
         
     }//GEN-LAST:event_btnEnviarPersonalActionPerformed
+
+    private void btnEnviarEntidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarEntidadActionPerformed
+        String nombre,tarea;
+        
+        nombre=nombreEntidad.getText();
+        tarea=tareaEntidad.getText();
+        
+        consultas.ingresarEntidad(nombre);
+    }//GEN-LAST:event_btnEnviarEntidadActionPerformed
+
+    private void tareaEntidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tareaEntidadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tareaEntidadActionPerformed
 
     /**
      * @param args the command line arguments
@@ -293,7 +287,6 @@ public class IngresarMision extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -304,9 +297,9 @@ public class IngresarMision extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField nombreEntidad;
     private javax.swing.JTextField personalNombre;
     private javax.swing.JTextField personalTitulo;
+    private javax.swing.JTextField tareaEntidad;
     // End of variables declaration//GEN-END:variables
 }

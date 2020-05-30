@@ -252,13 +252,13 @@ public class Missions2 extends javax.swing.JFrame {
        objetivoInfo.setText(mision.getObjetivoMision());
        LinkedList<String> list = consultas.categoriasMision(nombreMison);
        LinkedList<String> listObjetivos = consultas.tareasEntidad(nombreMison);
-      LinkedList<String> listEspeci = consultas.especializacionPersonal(nombreMison);
+       LinkedList<String> listEspeci = consultas.especializacionPersonal(nombreMison);
        for(int i=0;i<list.size();i++){
           listaCategorias.add(list.get(i));
        } 
        for(int i=0;i<listObjetivos.size();i++){
        
-         //listaObjetivos.
+         //listaObjetivos
        }
        
        

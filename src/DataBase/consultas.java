@@ -460,7 +460,7 @@ public  class   consultas {
     * @param id
     * @param titulo 
     */
-   public static void ingresarPersonaMision(String nombre,String fechaNacimiento, int id, String titulo){
+   public static void ingresarPersonaMision(String nombre,String fechaNacimiento, String titulo){
    
        /*
        insert into personal(nombre,id,fechanacimiento,titulo) 
@@ -471,8 +471,8 @@ public  class   consultas {
        fechaNacimiento=consultas.convert(fechaNacimiento);
        titulo=consultas.convert(titulo);
        
-       String sentencia="insert into personal(nombre,id,fechanacimiento,titulo) \n" +
-"        values("+nombre+","+id+","+fechaNacimiento+","+titulo+")";
+       String sentencia="insert into personal(nombre,fechanacimiento,titulo) \n" +
+"        values("+nombre+","+fechaNacimiento+","+titulo+")";
        
        try {
            
