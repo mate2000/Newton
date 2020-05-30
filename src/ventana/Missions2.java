@@ -5,6 +5,9 @@
  */
 package ventana;
 
+import DataBase.consultas;
+import DataBase.Mision;
+import java.util.LinkedList;
 /**
  *
  * @author Paulina
@@ -69,7 +72,6 @@ public class Missions2 extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblBuscarMision.setBackground(new java.awt.Color(153, 153, 255));
-        lblBuscarMision.setForeground(new java.awt.Color(0, 0, 0));
         lblBuscarMision.setText("Mission name");
         lblBuscarMision.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,31 +85,24 @@ public class Missions2 extends javax.swing.JFrame {
         jButton1.setText("Search");
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 20, -1, 40));
 
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nombre Misión");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
 
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Fecha de lanzamiento");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
 
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Fecha de finalización");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
 
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Coste misión");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, -1, -1));
 
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Estado misión");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, -1, -1));
 
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Objetivo misión");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 170, -1, -1));
 
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Categorías");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 120, -1));
 
@@ -124,10 +119,20 @@ public class Missions2 extends javax.swing.JFrame {
         fechaFinInfo.setBackground(new java.awt.Color(204, 204, 255));
         fechaFinInfo.setForeground(new java.awt.Color(255, 255, 255));
         fechaFinInfo.setEnabled(false);
+        fechaFinInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fechaFinInfoActionPerformed(evt);
+            }
+        });
         getContentPane().add(fechaFinInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 160, 20));
 
         costoInfo.setEditable(false);
         costoInfo.setForeground(new java.awt.Color(255, 255, 255));
+        costoInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                costoInfoActionPerformed(evt);
+            }
+        });
         getContentPane().add(costoInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 90, 170, -1));
 
         estadoInfo.setEditable(false);
@@ -136,18 +141,15 @@ public class Missions2 extends javax.swing.JFrame {
 
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel9.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Personal");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
         getContentPane().add(scrollbar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, -2, -1, 610));
 
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Especializacion");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, -1, -1));
 
         jLabel10.setBackground(new java.awt.Color(255, 255, 255));
         jLabel10.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Entidades afiliadas");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, -1, -1));
 
@@ -207,7 +209,6 @@ public class Missions2 extends javax.swing.JFrame {
         getContentPane().add(scrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 620, -1));
         getContentPane().add(scrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 620, 90));
 
-        listaObjetivos.setBackground(new java.awt.Color(255, 255, 255));
         listaObjetivos.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -218,7 +219,6 @@ public class Missions2 extends javax.swing.JFrame {
         getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 520, 240, 20));
 
         jLabel12.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Objetivos");
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 520, 150, -1));
 
@@ -238,7 +238,42 @@ public class Missions2 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblBuscarMisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblBuscarMisionActionPerformed
-        // TODO add your handling code here:
+        
+        
+       String nombreMison = lblBuscarMision.getText();
+      if(!nombreMison.isEmpty()){
+      
+       Mision mision= consultas.informacionMision(nombreMison);
+       nombreMisionInfo.setText(mision.getNombre());
+       fechaLanInfo.setText(mision.getFechaLanzamiento().toString());
+       fechaFinInfo.setText(mision.getFechaFinalizacion().toString());
+       costoInfo.setText(mision.getCoste());
+       estadoInfo.setText(mision.getEstadoMision());
+       objetivoInfo.setText(mision.getObjetivoMision());
+       LinkedList<String> list = consultas.categoriasMision(nombreMison);
+       LinkedList<String> listObjetivos = consultas.tareasEntidad(nombreMison);
+      LinkedList<String> listEspeci = consultas.especializacionPersonal(nombreMison);
+       for(int i=0;i<list.size();i++){
+          listaCategorias.add(list.get(i));
+       } 
+       for(int i=0;i<listObjetivos.size();i++){
+       
+         //listaObjetivos.
+       }
+       
+       
+       String[][] info =consultas.EntidadesAfiliadas(nombreMison);
+      
+      /* for (int i = 0; i < 1; i++) {
+            for (int j = 0; j < 4; j++) {
+                
+                jTable1.getModel().setValueAt(info[i][j], j, i);
+            }
+        }*/
+      
+      }
+      
+      
     }//GEN-LAST:event_lblBuscarMisionActionPerformed
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
@@ -248,6 +283,14 @@ public class Missions2 extends javax.swing.JFrame {
         dispose();
         
     }//GEN-LAST:event_btnIngresarActionPerformed
+
+    private void fechaFinInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fechaFinInfoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fechaFinInfoActionPerformed
+
+    private void costoInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_costoInfoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_costoInfoActionPerformed
 
     /**
      * @param args the command line arguments

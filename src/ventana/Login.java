@@ -63,8 +63,10 @@ public class Login extends javax.swing.JFrame {
         int id =Integer.valueOf(idLogin.getText());
         
         if(consultas.loginUsuario(id)){
-            
-            
+            Observation obs = new Observation();
+            obs.setVisible(true);
+            dispose();
+             
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

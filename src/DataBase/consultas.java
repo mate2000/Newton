@@ -13,7 +13,12 @@ import java.util.LinkedList;
  * @author MateoMA
  */
 public  class   consultas {
-    
+   
+   /**
+     * Metodo que me retorna el numero de filas de la cualquier consulta  
+     * @param consulta
+     * @return numero de filas de la consulta 
+     */
    private static int setNumRow(String consulta){
    
       int rowCount=0;
@@ -38,7 +43,11 @@ public  class   consultas {
     return rowCount;
    }
    
-   
+   /**
+    * Metodo que añade al parametro String dos comillas simples -> "'texto'" 
+    * @param nombreMision
+    * @return String  
+    */
    private static String convert(String nombreMision){
     
      char[] mision=nombreMision.toCharArray();
@@ -59,7 +68,10 @@ public  class   consultas {
     }
    
    
-   
+   /**
+    * Metodo que  retorna todos los regisro ingresados en la base de datos 
+    * @return un arreglo con la informacion de las observaciones de la base de datos 
+    */
    public static String[][] RegistrosObervacion(){
         /*
           select nombre,objeto,lugar,hora from personal
@@ -91,6 +103,11 @@ public  class   consultas {
    }
    
    
+   /**
+    * Metodo que me retorna la infomacion de todo el personal relacionado con una mision especifica 
+    * @param nombreMision
+    * @return un arreglo con la informacion del personal relacionada con una mision 
+    */
    public static String[][] PersonalMision(String nombreMision){
 
     /*
@@ -130,6 +147,11 @@ public  class   consultas {
    }
    
    
+   /**
+    * Metodo que me retorna la infomacion de todo las entodadesAfiliadas relacionado con una mision especifica 
+    * @param nombreMision
+    * @return un arreglo con las entidades afiliadas a una mision 
+    */
    public static String[][] EntidadesAfiliadas(String nombreMision){
     /*
        select entidadafiliada.nombre
@@ -166,7 +188,11 @@ public  class   consultas {
      
    }
    
-   
+   /**
+    * Metodo que retorna una mision 
+    * @param nombreMision
+    * @return retorna un objeto tipo mision 
+    */
    public static Mision informacionMision(String nombreMision){
      /*
         select nombre, estadomision, costemision, fechalanzamiento,fechafinalizacion,objetivomision
@@ -202,6 +228,11 @@ public  class   consultas {
    }
    
    
+   /**
+    * Metodo que retorna las categorias a las que pertenece una mision 
+    * @param nombreMision
+    * @return retorna una LinkedList con las distintas categorias a las que pertenece una mision  
+    */
    public static LinkedList<String> categoriasMision(String nombreMision){
    
       /*
@@ -235,6 +266,11 @@ public  class   consultas {
    }
    
   
+   /**
+    * Metodo que retorna una las diferetes especializaciones que tinene el personal relacioada con una mision 
+    * @param nombreMision
+    * @return retorna una LinkedList con las distintas especializaciones que tinene el personal
+    */
    public static LinkedList<String> especializacionPersonal(String nombreMision){
    
       /*
@@ -272,7 +308,11 @@ public  class   consultas {
     return listEspecializaciones;
    }
   
-   
+   /**
+    * Metodo que retorna las tareas que tienen las entidades afiliadas a una mision 
+    * @param nombreMision
+    * @return  retorna una LinkedList con las tareas que tienen las entidades afiliadas a una mision 
+    */
    public static LinkedList<String> tareasEntidad(String nombreMision){
    
       /*
@@ -306,6 +346,11 @@ public  class   consultas {
    }
     
    
+   /**
+    * Metodo que verifica si una persona ya se ha registrado 
+    * @param id
+    * @return retorna true si el usuario existe en la base de datos, si no retorna false 
+    */
    public static boolean loginUsuario(Integer id){
     
        /*
@@ -333,6 +378,15 @@ public  class   consultas {
    }
      
    
+   /**
+    * Metodo que ingresa un registro a la tabla  mision  en la base de datos 
+    * @param nombre
+    * @param costo
+    * @param estadoMision
+    * @param objetivoMision
+    * @param fechaLanzamiento
+    * @param fechaFinalizacion 
+    */
    public static void ingresarMision(String nombre,String costo,String estadoMision,String objetivoMision, String fechaLanzamiento,String fechaFinalizacion){
    
     /*
@@ -367,6 +421,12 @@ public  class   consultas {
    }
    
    
+   /**
+    * Metodo que ingresa un registro a la tabla personal en la base de datos
+    * @param nombre
+    * @param fechaNacimiento
+    * @param id 
+    */
    public static void ingresarPersona(String nombre,String fechaNacimiento, int id){
    
        /*
@@ -393,7 +453,13 @@ public  class   consultas {
    
    }
    
-   
+   /**
+    * Metodo que ingresa un registro a la tabla  personalMision  en la base de datos
+    * @param nombre
+    * @param fechaNacimiento
+    * @param id
+    * @param titulo 
+    */
    public static void ingresarPersonaMision(String nombre,String fechaNacimiento, int id, String titulo){
    
        /*
@@ -418,7 +484,10 @@ public  class   consultas {
    
    }
    
-   
+   /**
+    * Metodo que ingresa un registro a la tabla  entidad  en la base de datos
+    * @param nombre 
+    */
    public static void ingresarEntidad(String nombre){
    
        /*
@@ -440,7 +509,13 @@ public  class   consultas {
        }
    }
    
-   
+   /**
+    * Metodo que ingresa un registro a la tabla  observaciones en la base de datos
+    * @param objeto
+    * @param lugar
+    * @param hora
+    * @param idPersona 
+    */
    public static void ingresarObservacion(String objeto,String lugar,String hora, int idPersona){
    
        /*
@@ -466,7 +541,11 @@ public  class   consultas {
        }
    }
    
-   
+   /**
+    * Metodo que ingresa un registro a la tabla  personalMision  en la base de datos
+    * @param idMision
+    * @param idPersonal 
+    */
    public static void ingresarPersonalMision(int idMision,int idPersonal){
       
        /*
@@ -485,7 +564,11 @@ public  class   consultas {
    
    }
    
-   
+   /**
+    * Metodo que ingresa un registro a la tabla entidadMision  en la base de datos
+    * @param idMision
+    * @param identidad 
+    */
    public static void ingresarEntidadMision(int idMision,int identidad){
    
      /*
@@ -505,7 +588,11 @@ public  class   consultas {
    
    }
    
-   
+   /**
+    * Metodo que ingresa un registro a la tabla  tareasentidadafiliada  en la base de datos
+    * @param idEntidadMision
+    * @param tarea 
+    */
    public static void ingresarTareEntidad(int idEntidadMision,String tarea){
      
        /*
@@ -526,7 +613,11 @@ public  class   consultas {
        
    }
    
-   
+   /**
+    * Metodo que ingresa un registro a la tabla categoriaMision en la base de datos
+    * @param idMision
+    * @param idCategoria 
+    */
    public static void ingresarCategoriaMision(int idMision,int idCategoria){
    
        /*
@@ -544,7 +635,7 @@ public  class   consultas {
        }
    }
    
-  
+ 
    public static int idPersona(String nombrePersona){
      /*
        select id 

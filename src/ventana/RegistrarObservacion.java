@@ -23,9 +23,6 @@ public class RegistrarObservacion extends javax.swing.JFrame {
         String lugar=lugarObservacion.getText();
         String hora=horaObservacion.getText();
         
-        
-        
-        
         if(objeto!=""&&lugar!=""&&hora!=""){
            consultas.ingresarObservacion(objeto, lugar, hora, id);
         }
