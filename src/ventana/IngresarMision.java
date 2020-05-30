@@ -5,6 +5,11 @@
  */
 package ventana;
 
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+
 /**
  *
  * @author Paulina
@@ -29,49 +34,211 @@ public class IngresarMision extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        catalogoMisiones = new javax.swing.JComboBox<>();
-        btnGeneral = new javax.swing.JButton();
-        btnEntidad = new javax.swing.JButton();
-        bntPersonal = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        generalNombre = new javax.swing.JTextField();
+        fechaLanzamiento = new com.toedter.calendar.JDateChooser();
+        generalFecha = new javax.swing.JTextField();
+        generalCosto = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        generalObjetivo = new javax.swing.JTextArea();
+        btnEnviarGeneral = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        personalNombre = new javax.swing.JTextField();
+        personalTitulo = new javax.swing.JTextField();
+        btnEnviarPersonal = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jTextField8 = new javax.swing.JTextField();
+        jTextField9 = new javax.swing.JTextField();
+        btnEnviarEntidad = new javax.swing.JButton();
+        fechaNaci = new com.toedter.calendar.JDateChooser();
+        jLabel16 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Seleccione misión");
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Nombre de la misión");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
 
-        catalogoMisiones.setBackground(new java.awt.Color(255, 255, 255));
-        catalogoMisiones.setForeground(new java.awt.Color(0, 0, 0));
-        catalogoMisiones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(catalogoMisiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 160, -1));
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("General");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, -1, -1));
 
-        btnGeneral.setText("jButton1");
-        btnGeneral.addActionListener(new java.awt.event.ActionListener() {
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Personal");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, -1, -1));
+
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Entidad");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 110, -1, -1));
+
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Nombre");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
+
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Fecha de lanzamiento");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
+
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Duración de la misión");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
+
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Costo de la misión");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, -1, -1));
+
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Obejtivo de la misión");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, -1, -1));
+
+        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 220, -1));
+
+        generalNombre.setBackground(new java.awt.Color(255, 255, 255));
+        generalNombre.setForeground(new java.awt.Color(0, 0, 0));
+        generalNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGeneralActionPerformed(evt);
+                generalNombreActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
+        getContentPane().add(generalNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 130, -1));
 
-        btnEntidad.setText("jButton2");
-        getContentPane().add(btnEntidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 120, -1, -1));
+        fechaLanzamiento.setBackground(new java.awt.Color(255, 255, 255));
+        fechaLanzamiento.setForeground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(fechaLanzamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 130, -1));
 
-        bntPersonal.setText("jButton3");
-        getContentPane().add(bntPersonal, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, -1, -1));
+        generalFecha.setBackground(new java.awt.Color(255, 255, 255));
+        generalFecha.setForeground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(generalFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 130, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rocket2.jpg"))); // NOI18N
+        generalCosto.setBackground(new java.awt.Color(255, 255, 255));
+        generalCosto.setForeground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(generalCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, 130, -1));
+
+        generalObjetivo.setBackground(new java.awt.Color(255, 255, 255));
+        generalObjetivo.setColumns(20);
+        generalObjetivo.setForeground(new java.awt.Color(0, 0, 0));
+        generalObjetivo.setRows(5);
+        jScrollPane1.setViewportView(generalObjetivo);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 160, 60));
+
+        btnEnviarGeneral.setBackground(new java.awt.Color(255, 255, 255));
+        btnEnviarGeneral.setForeground(new java.awt.Color(0, 0, 0));
+        btnEnviarGeneral.setText("Enviar");
+        btnEnviarGeneral.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnviarGeneralActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnEnviarGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 370, -1, -1));
+
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel11.setText("Nombre");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, -1, -1));
+
+        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel12.setText("Título");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, -1, -1));
+
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel13.setText("Nacimiento");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, -1, -1));
+
+        personalNombre.setBackground(new java.awt.Color(255, 255, 255));
+        personalNombre.setForeground(new java.awt.Color(51, 51, 51));
+        getContentPane().add(personalNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, 130, -1));
+
+        personalTitulo.setBackground(new java.awt.Color(255, 255, 255));
+        personalTitulo.setForeground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(personalTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, 130, -1));
+
+        btnEnviarPersonal.setBackground(new java.awt.Color(255, 255, 255));
+        btnEnviarPersonal.setForeground(new java.awt.Color(0, 0, 0));
+        btnEnviarPersonal.setText("Enviar");
+        btnEnviarPersonal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnviarPersonalActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnEnviarPersonal, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 260, -1, -1));
+
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("Nombre");
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 140, -1, -1));
+
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setText("Tarea");
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 180, -1, -1));
+
+        jTextField8.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField8.setForeground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 140, 110, -1));
+
+        jTextField9.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField9.setForeground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 180, 110, -1));
+
+        btnEnviarEntidad.setBackground(new java.awt.Color(255, 255, 255));
+        btnEnviarEntidad.setForeground(new java.awt.Color(0, 0, 0));
+        btnEnviarEntidad.setText("Enviar");
+        getContentPane().add(btnEnviarEntidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 240, -1, -1));
+
+        fechaNaci.setBackground(new java.awt.Color(255, 255, 255));
+        fechaNaci.setForeground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(fechaNaci, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 200, 130, -1));
+
+        jLabel16.setText("jLabel16");
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 310, -1, -1));
+
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rocket2 (2).jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 620, 450));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 710, 450));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnGeneralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGeneralActionPerformed
+    private void generalNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generalNombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnGeneralActionPerformed
+    }//GEN-LAST:event_generalNombreActionPerformed
+
+    private void btnEnviarGeneralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarGeneralActionPerformed
+        // TODO add your handling code here:
+        String nombre, duracion, costo,objetivo;
+        
+        nombre = generalNombre.getText();
+        String fechaLanza = fechaLanzamiento.getDate().toString();
+        duracion = generalFecha.getText();
+        costo = generalCosto.getText();
+        objetivo = generalObjetivo.getText();
+    }//GEN-LAST:event_btnEnviarGeneralActionPerformed
+
+    private void btnEnviarPersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarPersonalActionPerformed
+        // TODO add your handling code here:
+        String nombre, titulo, nacimiento;
+        
+        nombre = personalNombre.getText();
+        titulo = personalTitulo.getText();      
+        nacimiento = fechaNaci.getDate().toString();
+        
+        
+    }//GEN-LAST:event_btnEnviarPersonalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -110,11 +277,36 @@ public class IngresarMision extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bntPersonal;
-    private javax.swing.JButton btnEntidad;
-    private javax.swing.JButton btnGeneral;
-    private javax.swing.JComboBox<String> catalogoMisiones;
+    private javax.swing.JButton btnEnviarEntidad;
+    private javax.swing.JButton btnEnviarGeneral;
+    private javax.swing.JButton btnEnviarPersonal;
+    private com.toedter.calendar.JDateChooser fechaLanzamiento;
+    private com.toedter.calendar.JDateChooser fechaNaci;
+    private javax.swing.JTextField generalCosto;
+    private javax.swing.JTextField generalFecha;
+    private javax.swing.JTextField generalNombre;
+    private javax.swing.JTextArea generalObjetivo;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField personalNombre;
+    private javax.swing.JTextField personalTitulo;
     // End of variables declaration//GEN-END:variables
 }
