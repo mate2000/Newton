@@ -7,6 +7,8 @@ package ventana;
 
 import java.sql.Date;
 
+
+
 /**
  *
  * @author Paulina
@@ -42,10 +44,12 @@ public class SignUpReal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nombre Completo");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, -1, -1));
 
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Fecha de nacimiento");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, -1, -1));
@@ -58,6 +62,7 @@ public class SignUpReal extends javax.swing.JFrame {
         dateSignUp.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(dateSignUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 180, -1));
 
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Documento de identidad");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, -1, -1));
 
@@ -75,19 +80,17 @@ public class SignUpReal extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/galaxia.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 651, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 430));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
         // TODO add your handling code here:
-        Date date = (Date) dateSignUp.getDate();
-        String nombreCompleto = nombreSignUp.getText();
-        long d = date.getTime();
-        java.sql.Date fecha = new java.sql.Date(d);
         
+        String nombreCompleto = nombreSignUp.getText();
         String idPersona = idSignUp.getText();
+        String fecha = dateSignUp.getDate().toString();
         
         
         

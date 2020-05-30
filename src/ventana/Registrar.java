@@ -27,21 +27,61 @@ public class Registrar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLabel2 = new javax.swing.JLabel();
+        btnRegLogin = new javax.swing.JButton();
+        btnRegSignUp = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("NEWTON");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, -1, -1));
+
+        btnRegLogin.setBackground(new java.awt.Color(255, 255, 255));
+        btnRegLogin.setForeground(new java.awt.Color(0, 0, 0));
+        btnRegLogin.setText("Login");
+        btnRegLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegLoginActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnRegLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 70, -1));
+
+        btnRegSignUp.setBackground(new java.awt.Color(255, 255, 255));
+        btnRegSignUp.setForeground(new java.awt.Color(0, 0, 0));
+        btnRegSignUp.setText("Sign up");
+        btnRegSignUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegSignUpActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnRegSignUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hubble.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 330));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnRegLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegLoginActionPerformed
+        // TODO add your handling code here:
+        Login log = new Login ();
+        log.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnRegLoginActionPerformed
+
+    private void btnRegSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegSignUpActionPerformed
+        // TODO add your handling code here:
+        SignUpReal suReal = new SignUpReal();
+        suReal.setVisible(true);
+        dispose();
+        
+    }//GEN-LAST:event_btnRegSignUpActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +119,9 @@ public class Registrar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnRegLogin;
+    private javax.swing.JButton btnRegSignUp;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
