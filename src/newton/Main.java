@@ -23,12 +23,15 @@ public class Main {
         
        String consulta1 [][]= consultas.RegistrosObervacion(); 
        String consulta2 [][]= consultas.PersonalMision(prueba);
-       String consulta3 [][]=  consultas.EntidadesAfiliadas("'Estacion espacial InTeRnACiOnAl'");
-       Mision mision = consultas.informacionMision("'sonda solar parker'");
-       LinkedList<String> list = consultas.categoriasMision("'ApOlLo 11'");
-       LinkedList<String> list2 = consultas.especializacionPersonal("'SoNdA sOlAr PaRkEr'");
-       LinkedList<String> list3 = consultas.tareasEntidad("'SoNdA sOlAr PaRkEr'");
-       LinkedList<String> list4 = consultas.tareasEntidad("'estacion espacial internacional'");
+       String consulta3 [][]=  consultas.EntidadesAfiliadas("Estacion espacial InTeRnACiOnAl");
+       Mision mision = consultas.informacionMision("sonda solar parker");
+       LinkedList<String> list = consultas.categoriasMision("ApOlLo 11");
+       LinkedList<String> list2 = consultas.especializacionPersonal("SoNdA sOlAr PaRkEr");
+       LinkedList<String> list3 = consultas.tareasEntidad("SoNdA sOlAr PaRkEr");
+       LinkedList<String> list4 = consultas.tareasEntidad("estacion espacial internacional");
+       
+       System.out.println(consultas.idPersona("mateo Montoya Aristizabal")); 
+       
         //System.out.println(""+consultas.loginUsuario(3));
         //consultas.ingresarMision("'Mir'", "'4.2 billones'", "'Completada'", "'Crear el primer laboratorio en el espacio de la URSS'", "'1986-02-20'", "'2001-03-23'");
       // consultas.ingresarPersona("'Sara'","'2005-12-28'",1001539564);
@@ -51,7 +54,8 @@ public class Main {
         }*/
         
         
-       /* for (int i = 0; i < 4; i++) {
+        
+        /*for (int i = 0; i < 4; i++) {
             for (int j = 0; j < consulta1[i].length; j++) {
                 System.out.println(""+consulta1[i][j]);
             }

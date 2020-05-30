@@ -544,7 +544,33 @@ public  class   consultas {
        }
    }
    
-   
+  
+   public static int idPersona(String nombrePersona){
+     /*
+       select id 
+             from personal where lower(personal.nombre) like lower('mateo Montoya Aristizabal ')
+       
+       */
+     
+     nombrePersona=consultas.convert(nombrePersona);
+     
+     int idPersona=0;
+     
+     String consulta="select id from personal where lower(personal.nombre) like " + " lower"+"("+nombrePersona+")";
+     
+     try {
+            ResultSet registro = DB.resultQuery(consulta);
+           
+            while(registro.next()){
+                System.out.println("4");
+            }
+            
+       } catch (Exception e) {
+            System.out.println(e);
+       }
+     
+    return idPersona;
+   } 
    
    
    
